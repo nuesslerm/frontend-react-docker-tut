@@ -11,3 +11,17 @@ before_install:
 
 script:
   - docker run -e CI=true nuesslerm/test yarn test --coverage --watchAll=false
+
+deploy:
+  provider: elasticbeanstalk
+  access_key_id:
+    secure: $AWS_ACCESS_KEY
+  secret_access_key:
+    secure: $AWS_SECRET_KEY
+  on:
+    branch: master
+  region: eu-west-1
+  app: frontend-react-docker-tut
+  env: Frontendreactdockertut-env
+  bucket_name: elasticbeanstalk-eu-west-1-462170392819
+  bucket_path: frontend-react-docker-tut
