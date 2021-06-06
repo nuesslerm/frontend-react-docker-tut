@@ -20,6 +20,19 @@ deploy:
     branch: master
   region: 'eu-west-1'
   app: 'frontend-react-docker-tut'
+  # env should be set to the lower case of your Beanstalk Environment name (?)
   env: 'Frontendreactdockertut-env'
   bucket_name: 'elasticbeanstalk-eu-west-1-462170392819'
   bucket_path: 'frontend-react-docker-tut'
+# for comparison
+# deploy:
+#   provider: elasticbeanstalk
+#   region: 'us-east-1'
+#   app: 'docker'
+#   env: 'docker-env'
+#   bucket_name: 'elasticbeanstalk-us-east-1-923445559289'
+#   bucket_path: 'docker'
+#   on:
+#     branch: master
+#   access_key_id: $AWS_ACCESS_KEY
+#   secret_access_key: $AWS_SECRET_KEY
