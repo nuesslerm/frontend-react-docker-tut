@@ -1,0 +1,28 @@
+version: '3'
+services:
+  dev:
+    # image: nuesslerm/web:latest
+    # container_name: web
+    build:
+      # specifies the entry folder for docker that contains the project files.
+      # e.g. if we had the react app in a subfolder called react-project
+      # then context would not be the current directory ./ but rather  react-project
+      context: .
+      dockerfile: Dockerfile.dev
+    ports:
+      - 3000:3000
+    volumes:
+      - /usr/app/node_modules
+      - .:/usr/app
+  # test:
+  #   build:
+  #     context: .
+  #     dockerfile: Dockerfile.dev
+  #   volumes:
+  #     - /usr/app/node_modules
+  #     - .:/usr/app
+  #   command: ['yarn', 'test']
+  prod:
+    build: .
+    ports:
+      - 8080:80

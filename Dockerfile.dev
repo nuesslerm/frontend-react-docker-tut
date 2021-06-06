@@ -1,0 +1,15 @@
+FROM node:14-alpine
+WORKDIR /usr/app
+
+COPY package.json .
+RUN yarn install
+COPY . .
+
+CMD ["yarn", "start"]
+# keep container running in foreground without terminating
+# CMD tail -f /dev/null
+
+# try starting up an http server on a given port with ruby like so
+# docker run --rm -i -p 8000:8000 -v $(pwd):/app -w /app ruby:alpine ruby -run -ehttpd . -p8000
+# source: https://unix.stackexchange.com/questions/32182/simple-command-line-http-server
+# this is done in order to listen to e.g. port 8080 to determine if docker image was successfully run

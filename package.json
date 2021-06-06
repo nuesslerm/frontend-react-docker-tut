@@ -12,6 +12,9 @@
     "web-vitals": "^1.0.1"
   },
   "scripts": {
+    "docker:start": "docker compose up dev --build",
+    "docker:test": "docker compose exec dev yarn test",
+    "docker:build": "docker compose up prod --build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -34,5 +37,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "concurrently": "^6.2.0",
+    "wait-on": "^5.3.0"
   }
 }
