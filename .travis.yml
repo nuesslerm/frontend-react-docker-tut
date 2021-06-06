@@ -1,0 +1,13 @@
+language: generic
+# need super user level permissions
+sudo: required
+# tell ci which services to preinstall
+services:
+  - docker
+
+before_install:
+  # tag is not as important in CI because it's only ever going to be used within the CI
+  - docker build -t nuesslerm/test -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true nuesslerm/test yarn test --coverage --watchAll=false
