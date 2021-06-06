@@ -9,4 +9,8 @@ COPY . .
 RUN yarn build
 
 FROM nginx
+# EXPOSE instruction is only relevant for AWS elastic-beanstalk; locally it doesn't do anything
+# EXPOSE tells elastic-beanstalk to listen for incoming traffic on port 80, 
+# which is where nginx is serving the build folder by default (nginx default port is 80)
+EXPOSE 80
 COPY --from=builder /usr/app/build /usr/share/nginx/html
