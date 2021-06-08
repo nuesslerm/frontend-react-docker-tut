@@ -1,6 +1,6 @@
-language: generic
 # need super user level permissions
 sudo: required
+language: generic
 # tell ci which services to preinstall
 services:
   - docker
